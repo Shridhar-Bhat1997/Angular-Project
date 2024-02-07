@@ -1,0 +1,8 @@
+<!-- Container div that conditionally renders its content based on the presence of 'tags' -->
+<div *ngIf="tags">
+    <!-- Iterate over each 'tag' in the 'tags' array using *ngFor directive -->
+    <a *ngFor="let tag of tags" routerLink="/tag/{{tag.name}}">
+          <!-- Display the tag name and count in parentheses -->
+        {{tag.name}}({{tag.count}})
+    </a>
+</div>

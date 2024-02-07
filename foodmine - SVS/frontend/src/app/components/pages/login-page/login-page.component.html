@@ -1,0 +1,29 @@
+<!-- Container to hold the login form -->
+<div class="container">
+    <!-- Details section containing the login form -->
+    <div class="details">
+        <!-- App-title component displaying the title "Login" -->
+        <app-title title="Login"></app-title>
+
+        <!-- Form element with Angular formGroup directive bound to "loginForm" -->
+        <form [formGroup]="loginForm" (ngSubmit)="submit()">
+            <!-- TextInput component for entering the email -->
+            <text-input [control]="fc.email" [showErrorsWhen]="isSubmitted" type="email" label="Email"></text-input>
+            
+            <!-- TextInput component for entering the password -->
+            <text-input [control]="fc.password" [showErrorsWhen]="isSubmitted" type="password" label="Password"></text-input>
+
+            <!-- DefaultButton component for submitting the form -->
+            <default-button text="Login"></default-button>
+
+            <!-- Section for new user registration link -->
+            <div class="register">
+                <!-- Text prompting new users -->
+                New user? &nbsp;
+                
+                <!-- RouterLink for navigating to the registration page -->
+                <a routerLink="/register" [queryParams]="{returnUrl: returnUrl}">Register Here</a>
+            </div>
+        </form>
+    </div>
+</div>

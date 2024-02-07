@@ -1,0 +1,58 @@
+<!-- Display a not-found message if food id is not available -->
+<app-not-found [visible]="!food.id" notFoundMessage="Food Not Found" resetLinkText="Back To Homepage">
+</app-not-found>
+
+<!-- Main container for displaying food details -->
+<div *ngIf="food" class="container">
+
+    <!-- Display the image of the food -->
+    <img [src]="food.imageUrl" [alt]="food.name" />
+
+    <!-- Details section including name, favorite status, rating, origins, tags, cook time, price, and add to cart button -->
+    <div class="details">
+        <!-- Header section with food name and favorite status -->
+        <div class="header">
+            <span class="name">
+                {{food.name}}
+            </span>
+            <!-- Display heart emoji if the food is marked as favorite -->
+            <span class="favorite {{food.favorite ? '': 'not'}}">❤</span>
+        </div>
+
+        <!-- Display star rating based on the food's stars property -->
+        <div class="rating">
+            <star-rating [stars]="food.stars" [size]="1.8"></star-rating>
+        </div>
+
+        <!-- Display origins of the food -->
+        <div class="origins">
+            <span *ngFor="let origin of food.origins">
+                {{origin}}
+            </span>
+        </div>
+
+        <!-- Display tags for the food with links to tag pages -->
+        <div class="tags">
+            <a *ngFor="let tag of food.tags" routerLink="/tag/{{tag}}">
+                {{tag}}
+            </a>
+        </div>
+
+        <!-- Display cook time for the food -->
+        <div class="cook-time">
+            <span>
+                Time to cook about <strong>{{food.cookTime}}</strong> minutes
+            </span>
+        </div>
+
+        <!-- Display the price of the food in currency format -->
+        <div class="price">
+            <span>
+                {{food.price | currency}}
+            </span>
+        </div>
+
+        <!-- Button to add the food item to the cart -->
+        <button (click)="addToCart()">Add To Cart</button>
+    </div>
+</div>

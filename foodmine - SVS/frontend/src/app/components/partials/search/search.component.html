@@ -1,0 +1,7 @@
+<div>
+    <!-- Search input field with a placeholder, binding its value to 'searchTerm' -->
+    <input #s type="text" placeholder="Search Foods!" (keyup.enter)="search(s.value)" [value]="searchTerm" />
+    
+    <!-- Search button triggering the 'search' method when clicked -->
+    <button (click)="search(s.value)">Search</button>
+</div>

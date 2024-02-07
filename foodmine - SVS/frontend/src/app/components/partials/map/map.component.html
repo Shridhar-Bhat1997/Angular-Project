@@ -1,0 +1,9 @@
+<div class="container">
+    <!-- Button to find user's location, visible only if not in readonly mode -->
+    <button *ngIf="!readonly" class="find-location" (click)="findMyLocation()">
+        Find My Location
+    </button>
+    
+    <!-- Div element for displaying the map -->
+    <div #map class="map"></div>
+</div>

@@ -1,0 +1,5 @@
+ <!-- Display the notFoundMessage when the 'visible' property is true -->
+<div *ngIf="visible">
+    {{notFoundMessage}}
+    <a [routerLink]="resetLinkRoute">{{resetLinkText}}</a>
+</div>

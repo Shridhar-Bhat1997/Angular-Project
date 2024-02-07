@@ -1,0 +1,36 @@
+<app-not-found [visible]="!order || !order.items.length" notFoundMessage="No orders yet!"
+    resetLinkText="Go To Homepage"></app-not-found>
+
+<div class="container" *ngIf="order && order.items.length">
+    <div class="content">
+        <!-- Displaying the title for the order form -->
+        <app-title title="Order Form" fontSize="1.6rem"></app-title>
+
+        <!-- Form for entering name and address -->
+        <form [formGroup]="checkoutForm">
+            <!-- Text input for entering the name -->
+            <text-input [control]="fc.name" label="Name"></text-input>
+            <!-- Text input for entering the address -->
+            <text-input [control]="fc.address" label="Address"></text-input>
+        </form>
+
+        <!-- Displaying the list of order items -->
+        <order-items-list [order]="order"></order-items-list>
+    </div>
+
+    <!-- Displaying a map to choose the address -->
+    <div class="map">
+        <app-title title="Choose your address on map" fontSize="1.6rem"></app-title>
+        <map [order]="order"></map>
+    </div>
+
+    <!-- Buttons container for the 'Go To Payment' button -->
+    <div class="buttons-container">
+        <div class="buttons">
+            <!-- Button to proceed to the payment -->
+            <button (click)="createOrder()">
+                Go To Payment
+            </button>
+        </div>
+    </div>
+</div>

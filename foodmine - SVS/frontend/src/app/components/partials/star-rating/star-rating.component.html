@@ -1,0 +1,7 @@
+<!-- Container div for displaying a set of stars using ngFor directive -->
+<div class="container">
+     <!-- Use ngFor to iterate over an array of values (1 to 5) representing stars -->
+     <!-- Set the source attribute dynamically based on the current star value -->
+        <!-- Apply dynamic styles to the star image -->
+    <img *ngFor="let current of [1, 2, 3, 4, 5]" [src]="getStarImage(current)" [ngStyle]="styles" />
+</div>

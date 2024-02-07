@@ -1,0 +1,35 @@
+<header>
+    <div class="container">
+        <!-- Logo with a link to the home page -->
+        <a routerLink="/" class="logo">Flavours <i class="fas fa-utensils"></i></a>
+        
+        <!-- Navigation section with a list of links -->
+        <nav>
+            <ul>
+                <!-- If the user is not authenticated, display a Login link -->
+                <li *ngIf="!isAuth">
+                    <a routerLink="/login">Login</a>
+                </li>
+                
+                <!-- If the user is authenticated, display a menu with user-related links -->
+                <li *ngIf="isAuth" class="menu-container">
+                    <a routerLink="/dashboard"> <i class="fas fa-user"></i> {{user.name|titlecase}}</a>
+                    
+                    <!-- Dropdown menu for authenticated user -->
+                    <div class="menu">
+                        <a routerLink="/profile">Profile</a>
+                        <a routerLink="/checkout">Orders</a>
+                        <a (click)="logout()">Logout</a>
+                    </div>
+                </li>
+                
+                <!-- Display a cart link with the cart quantity if the user is authenticated -->
+                <li>
+                    <a *ngIf="isAuth" routerLink="/cart-page">
+                        <i class="fas fa-shopping-cart"></i> <span *ngIf="cartQuantity">{{cartQuantity}}</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>

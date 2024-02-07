@@ -1,0 +1,36 @@
+<div class="container">
+    <!-- Display order details if 'order' is available -->
+    <div class="content" *ngIf="order">
+        <!-- Display the order number -->
+        <h1>Order #{{ order.id }}</h1>
+
+        <!-- Details section for order information -->
+        <div class="details">
+            <!-- Display the order creation date -->
+            <div><strong>Date:</strong> {{ order.createdAt | date: 'medium' }}</div>
+
+            <!-- Display the customer's name -->
+            <div><strong>Name:</strong> {{ order.name }}</div>
+
+            <!-- Display the shipping address -->
+            <div><strong>Address:</strong> {{ order.address }}</div>
+
+            <!-- Display the order status -->
+            <div><strong>Status:</strong> {{ order.status }}</div>
+
+            <!-- Display payment ID if available -->
+            <div *ngIf="order.paymentId">
+                <strong>Payment ID:</strong> {{ order.paymentId }}
+            </div>
+        </div>
+
+        <!-- Display the list of order items using the 'order-items-list' component -->
+        <order-items-list [order]="order"></order-items-list>
+    </div>
+
+    <!-- Display the shipping address on a map -->
+    <div>
+        <app-title title="Shipping Address"></app-title>
+        <map [order]="order" [readonly]="true"></map>
+    </div>
+</div>
